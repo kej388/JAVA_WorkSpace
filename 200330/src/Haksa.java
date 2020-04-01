@@ -1,9 +1,12 @@
 import java.awt.Container;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -50,6 +53,22 @@ public class Haksa extends JFrame{
 		this.btnInsert = new JButton("입력");
 		this.btnUpdate = new JButton("수정");
 		this.btnDelete = new JButton("삭제");
+		
+		this.btnDelete.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int result = JOptionPane.showConfirmDialog(null, "삭제하시겠습니까?", "삭제", JOptionPane.YES_NO_OPTION);
+				if(result == JOptionPane.YES_OPTION) {
+					// 삭제처리. DB 연동해서 삭제
+					System.out.println("삭제처리...");
+					
+					// 삭제처리완료 메시지 출력
+					JOptionPane.showMessageDialog(null, "삭제되었습니다.");
+				}
+			}
+		});
+		
 		
 		c.add(this.btnList);
 		c.add(this.btnInsert);
