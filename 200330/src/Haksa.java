@@ -54,11 +54,23 @@ public class Haksa extends JFrame{
 		this.btnUpdate = new JButton("수정");
 		this.btnDelete = new JButton("삭제");
 		
+		this.btnInsert.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+			
+				if(tfId.getText().length() == 0) {
+					JOptionPane.showMessageDialog(null, "입력하세요");
+				}
+			}
+		});
+		
 		this.btnDelete.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int result = JOptionPane.showConfirmDialog(null, "삭제하시겠습니까?", "삭제", JOptionPane.YES_NO_OPTION);
+				int result = JOptionPane.showConfirmDialog(null, "삭제하시겠습니까?", 
+						"삭제", JOptionPane.YES_NO_OPTION);
 				if(result == JOptionPane.YES_OPTION) {
 					// 삭제처리. DB 연동해서 삭제
 					System.out.println("삭제처리...");
